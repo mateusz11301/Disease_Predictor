@@ -40,5 +40,3 @@ class KolmogorovFeatureSelector(BaseEstimator, TransformerMixin):
     def transform(self, X):
         X = pd.DataFrame(X)
         return X.drop(columns=self.features_to_remove_, errors="ignore")
-
-export(KolmogorovFeatureSelector)
