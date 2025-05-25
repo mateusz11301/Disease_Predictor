@@ -1,15 +1,9 @@
-from nbconvert import export
 from scipy.stats import ks_2samp
 from sklearn.base import BaseEstimator, TransformerMixin
 import pandas as pd
-import numpy as np
 
 class KolmogorovFeatureSelector(BaseEstimator, TransformerMixin):
     def __init__(self, threshold=0.99, verbose=False):
-        """
-        :param threshold: Próg podobieństwa (p-value). Jeśli p > threshold, cechy są uznawane za zbyt podobne.
-        :param verbose: Jeśli True, wypisuje, które cechy zostały usunięte.
-        """
         self.threshold = threshold
         self.verbose = verbose
         self.features_to_remove_ = []
@@ -30,7 +24,6 @@ class KolmogorovFeatureSelector(BaseEstimator, TransformerMixin):
 
                 stat, p_value = ks_2samp(X[col1], X[col2])
                 if p_value > self.threshold:
-                    # Dodaj jedną z pary do usunięcia
                     self.features_to_remove_.append(col2)
                     if self.verbose:
                         print(f"Usuwam cechę: {col2} (podobna do {col1}, p={p_value:.3f})")
