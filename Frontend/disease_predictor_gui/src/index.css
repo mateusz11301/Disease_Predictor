@@ -1,17 +1,1 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-body {
-  margin: 0 auto;
-  display: flex;
-  max-width:  1680px;
-  min-height: 100vh;
-}
-
-#root {
-  background-color: #636363;
-  min-width:  1680px;
-}
+@import "tailwindcss";

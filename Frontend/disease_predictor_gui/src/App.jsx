@@ -1,4 +1,3 @@
-import './App.css'
 import SymptomSelector from "./Components/SymptomSelector/SymptomSelector.jsx";
 
 function App() {
