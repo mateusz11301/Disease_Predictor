@@ -1,9 +1,9 @@
 import pandas as pd
+import logging
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
 
 from .model_loader import get_model
 from .feature_loader import get_features

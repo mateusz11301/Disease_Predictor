@@ -1,11 +1,4 @@
-import {useEffect, useState} from "react"
-import axios from "axios";
-
-function SymptomDisplay({selectedSymptoms, setSelectedSymptoms, searchedSymptoms}) {
-    const [features, setFeatures] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-
+function SymptomDisplay({selectedSymptoms, setSelectedSymptoms, searchedSymptoms, features, loading, error}) {
     function toggleSymptom(symptom) {
         const updateSelected = selectedSymptoms.includes(symptom) ? selectedSymptoms.filter((s) => s !== symptom) : [...selectedSymptoms, symptom]
 
@@ -13,23 +6,6 @@ function SymptomDisplay({selectedSymptoms, setSelectedSymptoms, searchedSymptoms
     }
 
     const filteredSymptoms = features.filter((f) => f.toLowerCase().trim().includes(searchedSymptoms.toLowerCase().trim()))
-
-    useEffect(() => {
-        async function fetchFeatures() {
-            try {
-                const response = await axios.get("api/features/")
-                setFeatures(response.data)
-            }
-            catch (err) {
-                setError("Błąd przy ładowaniu objawów")
-            }
-            finally {
-                setLoading(false)
-            }
-        }
-
-        fetchFeatures()
-    }, []);
 
     if (loading) return <div className="min-h-80 text-center text-gray-500">Ładowanie objawów...</div>;
     if (error) return <div className="min-h-80 text-center text-red-500">{error}</div>;

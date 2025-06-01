@@ -1,7 +1,7 @@
-function ResultScreen() {
+function ResultScreen({result}) {
     return (
         <>
-
+            {result}
         </>
     )
 }
