@@ -6,6 +6,7 @@ from rest_framework import status
 
 
 from .model_loader import get_model
+from .feature_loader import get_features
 
 class PredictDiseaseView(APIView):
     def post(self, request) -> Response:
@@ -21,5 +22,14 @@ class PredictDiseaseView(APIView):
             prediction = model.predict(features)
             return Response({"disease": prediction[0]})
 
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GetFeaturesView(APIView):
+    def get(self, request) -> Response:
+        try:
+            features = get_features()
+
+            return Response(features)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
