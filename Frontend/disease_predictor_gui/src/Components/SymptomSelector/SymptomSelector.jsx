@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar.jsx";
 import SymptomDisplay from "./SymptomDisplay.jsx";
 import SelectedSymptoms from "./SelectedSymptoms.jsx";
 import PredictButton from "./PredictButton.jsx";
+import ClearButton from "./ClearButton.jsx";
 
 
 function SymptomSelector() {
@@ -19,10 +20,10 @@ function SymptomSelector() {
                     </h1>
                     <SearchBar searchedSymptoms={searchedSymptoms} setSearchedSymptoms={setSearchedSymptoms}/>
                     <SymptomDisplay selectedSymptoms={selectedSymptoms} setSelectedSymptoms={setSelectedSymptoms} searchedSymptoms={searchedSymptoms} />
+                    { selectedSymptoms.length > 0 && <ClearButton setSelectedSymptoms={setSelectedSymptoms}/> }
                     <SelectedSymptoms selectedSymptoms={selectedSymptoms} setSymptoms={setSelectedSymptoms}/>
                 </div>
-                <PredictButton />
-                {searchedSymptoms}
+                <PredictButton selectedSymptoms={selectedSymptoms}/>
             </div>
         </>
     )
