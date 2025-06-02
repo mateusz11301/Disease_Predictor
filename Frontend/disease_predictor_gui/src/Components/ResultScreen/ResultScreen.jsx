@@ -36,9 +36,8 @@ function ResultScreen({result}) {
                 try {
                     const resultEN = await axios.get(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(result)}`)
                     setDescription(resultEN.data.extract || "Brak opisu")
-                } catch (err2) {
+                } catch {
                     setDescription("Brak opisu")
-                    setError("Nie udało się pobrać opisu z Wikipedii");
                 }
             } finally {
                 setLoading(false)
