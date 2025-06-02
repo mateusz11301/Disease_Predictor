@@ -6,11 +6,13 @@ import SymptomDisplay from "./SymptomDisplay.jsx";
 import SelectedSymptoms from "./SelectedSymptoms.jsx";
 import PredictButton from "./PredictButton.jsx";
 import ClearButton from "./ClearButton.jsx";
+import Header1 from "../Header1.jsx";
 
 function SymptomSelector({handlePredict}) {
     const [selectedSymptoms, setSelectedSymptoms] = useState([])
     const [searchedSymptoms, setSearchedSymptoms] = useState("")
 
+    const [featuresAll, setFeaturesAll] = useState([])
     const [features, setFeatures] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -18,8 +20,9 @@ function SymptomSelector({handlePredict}) {
     useEffect(() => {
         async function fetchFeatures() {
             try {
-                const response = await axios.get("api/features/")
-                setFeatures(response.data)
+                const response = await axios.get("api/featuresPl/")
+                setFeaturesAll(response.data)
+                setFeatures(Object.keys(response.data))
             }
             catch (err) {
                 setError(`Błąd przy ładowaniu objawów. ${err}`)
@@ -40,13 +43,11 @@ function SymptomSelector({handlePredict}) {
         <>
             <div className="selector w-full min-w-4xl max-w-4xl bg-white p-6 rounded-2xl shadow-xl flex flex-col justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-center text-blue-600 mb-6">
-                        Wybierz objawy
-                    </h1>
+                    <Header1 title="Wybierz objawy"/>
                     <SearchBar searchedSymptoms={searchedSymptoms} setSearchedSymptoms={setSearchedSymptoms}/>
-                    <SymptomDisplay selectedSymptoms={selectedSymptoms} setSelectedSymptoms={setSelectedSymptoms} searchedSymptoms={searchedSymptoms} features={features} loading={loading} error={error}/>
+                    <SymptomDisplay selectedSymptoms={selectedSymptoms} setSelectedSymptoms={setSelectedSymptoms} searchedSymptoms={searchedSymptoms} features={features} featuresAll={featuresAll} loading={loading} error={error}/>
                     { selectedSymptoms.length > 0 && <ClearButton setSelectedSymptoms={setSelectedSymptoms}/> }
-                    <SelectedSymptoms selectedSymptoms={selectedSymptoms} setSymptoms={setSelectedSymptoms}/>
+                    <SelectedSymptoms selectedSymptoms={selectedSymptoms} setSymptoms={setSelectedSymptoms} featuresAll={featuresAll}/>
                 </div>
                 <PredictButton selectedSymptoms={selectedSymptoms} handlePredict={() => handlePredict(symptomVector)}/>
             </div>

@@ -7,6 +7,8 @@ from rest_framework import status
 
 from .model_loader import get_model
 from .feature_loader import get_features
+from .feature_PL_loader import get_PlFeatures
+from .labels_PL_loader import get_PlLabels
 
 class PredictDiseaseView(APIView):
     def post(self, request) -> Response:
@@ -29,6 +31,24 @@ class GetFeaturesView(APIView):
     def get(self, request) -> Response:
         try:
             features = get_features()
+
+            return Response(features)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GetFeaturesPlView(APIView):
+    def get(self, request) -> Response:
+        try:
+            features = get_PlFeatures()
+
+            return Response(features)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GetLabelsPlView(APIView):
+    def get(self, request) -> Response:
+        try:
+            features = get_PlLabels()
 
             return Response(features)
         except Exception as e:

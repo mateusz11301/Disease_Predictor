@@ -1,4 +1,4 @@
-import heart from "../../../public/heart.svg"
+import heart from "./heart.svg"
 
 function LoadingScreen() {
     return (
