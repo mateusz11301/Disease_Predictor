@@ -20,7 +20,7 @@ function SymptomSelector({handlePredict}) {
     useEffect(() => {
         async function fetchFeatures() {
             try {
-                const response = await axios.get("api/featuresPl/")
+                const response = await axios.get("/api/featuresPl/")
                 setFeaturesAll(response.data)
                 setFeatures(Object.keys(response.data))
             }

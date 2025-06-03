@@ -13,7 +13,7 @@ function App() {
     const [fadeOut, setFadeOut] = useState(false)
 
     const mutation = useMutation({
-        mutationFn: (symptomVector) => axios.post("api/predict/", {symptoms: symptomVector}),
+        mutationFn: (symptomVector) => axios.post("/api/predict/", {symptoms: symptomVector}),
         onSuccess: (response) => {
             setTimeout(() => {
                 setResult(response.data.disease || "Brak diagnozy")

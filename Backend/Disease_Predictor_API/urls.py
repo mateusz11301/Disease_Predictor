@@ -4,6 +4,6 @@ from .views import PredictDiseaseView, GetFeaturesView, GetFeaturesPlView, GetLa
 urlpatterns = [
     path('predict/', PredictDiseaseView.as_view(), name="pedict_disease"),
     path('features/', GetFeaturesView.as_view(), name="get_features"),
-    path('featuresPl/', GetFeaturesPlView.as_view(), name="get_features"),
-    path('labelsPl/', GetLabelsPlView.as_view(), name="get_features"),
+    path('featuresPl/', GetFeaturesPlView.as_view(), name="get_featuresPL"),
+    path('labelsPl/', GetLabelsPlView.as_view(), name="get_labelsPL"),
 ]

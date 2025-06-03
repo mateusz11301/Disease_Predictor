@@ -11,7 +11,7 @@ function ResultScreen({result}) {
     const [labelsAll, setLabelsAll] = useState({})
 
     useEffect(() => {
-        axios.get("api/labelsPl/")
+        axios.get("/api/labelsPl/")
             .then(res => setLabelsAll(res.data))
             .catch(err => console.error("Błąd ładowania labels-pl:", err))
     }, [])
