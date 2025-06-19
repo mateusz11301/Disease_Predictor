@@ -4,7 +4,6 @@ WORKDIR /app/Backend
 
 COPY Backend/ ./
 COPY Models_Files/ ../Models_Files
-COPY manage.py .
 
 RUN apt-get update && apt-get install -y p7zip-full
 RUN pip install --upgrade pip && pip install -r requirements.txt
