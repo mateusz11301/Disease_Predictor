@@ -4,6 +4,14 @@ A full-stack web application for disease classification based on symptoms. Built
 
 ---
 
+## 📚 Project Info
+
+**Author**: Mateusz Sochacki  
+**Type**: School project on Artificial Intelligence  
+**License**: Beerware (see below)
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -57,7 +65,7 @@ docker-compose up --build
 ### Dataset
 
 * https://www.kaggle.com/datasets/dhivyeshrk/diseases-and-symptoms-dataset
-* 378 symptoms
+* 377 symptoms
 * 773 disease labels
 
 ### Preprocessing
@@ -80,8 +88,7 @@ docker-compose up --build
 
 * Input symptoms through an intuitive form
 * View translated names (EN/PL)
-* Model selection (KNN / Logistic Regression / etc.)
-* View diagnosis and confidence metrics
+* View diagnosis
 
 ---
 
@@ -123,12 +130,30 @@ Sample results from `results.json`:
 ## 🧪 Development
 
 ```bash
+# Windows
+# Django backend dev
+python -m venv .venv
+.venv\Scripts\activate
+cd Backend
+pip install -r requirements.txt
+python manage.py runserver
+
 # React frontend dev
 cd Frontend/disease_predictor_gui
 npm install
 npm run dev
-
-# Django backend dev
-cd Backend
-python manage.py runserver
 ```
+
+---
+
+## 📝 License
+
+This project is open source under a modified Beerware License (no commercial use).  
+You can use it, modify it, and share it freely. If we ever meet and you think this was useful,  
+you can buy me a beer 🍺
+
+Just don’t remove my name as the original author.  
+**Project by Mateusz Sochacki (2025).**
+
+> 🔍 This project was created for educational purposes only.  
+> It is **not intended for commercial use or resale.**
