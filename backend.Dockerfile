@@ -10,4 +10,4 @@ RUN pip install --upgrade pip && pip install -r Backend/requirements.txt
 
 EXPOSE 8000
 
-CMD ["gunicorn", "Disease_Predictor_API.wsgi:application", "--chdir", "Backend", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "Backend.core.wsgi:application", "--bind", "0.0.0.0:8000"]
