@@ -1,6 +1,7 @@
 FROM python:3.12.8-slim
 
 WORKDIR /app
+ENV PYTHONPATH=/app
 
 COPY Backend/ ./Backend
 COPY Models_Files/ ./Models_Files
