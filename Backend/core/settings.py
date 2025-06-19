@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-_((6$+3@=37ev*2zt%q#(*edsf_$-=k2!+wjrja__e($=mgca^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['disease-predictor-backend-lfmz.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
