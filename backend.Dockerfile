@@ -1,12 +1,14 @@
 FROM python:3.12.8-slim
 
-WORKDIR /app
+WORKDIR /app/Backend
 
-COPY . .
+COPY Backend/ ./
+COPY Models_Files/ ../Models_Files
+COPY manage.py .
 
-RUN pip install --upgrade pip
-RUN pip install -r Backend/requirements.txt
+RUN apt-get update && apt-get install -y p7zip-full
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
 EXPOSE 8000
 
-CMD ["python", "Backend/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "Disease_Predictor_API.wsgi:application", "--bind", "0.0.0.0:8000"]
