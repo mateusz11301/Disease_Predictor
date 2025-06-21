@@ -6,7 +6,7 @@ WORKDIR /app
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV PYTHONPATH=/app/Backend
+ENV PYTHONPATH=/app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y p7zip-full build-essential
@@ -35,7 +35,7 @@ RUN mkdir -p Backend/static
 RUN cp -r Frontend/disease_predictor_gui/dist/* Backend/static/
 
 # Return to backend directory
-WORKDIR /app/Backend
+WORKDIR /app
 
 # Expose port
 EXPOSE 8000
