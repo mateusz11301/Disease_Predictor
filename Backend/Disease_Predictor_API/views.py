@@ -4,11 +4,15 @@ import logging
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.views.generic import TemplateView
 
 from .model_loader import get_model
 from .feature_loader import get_features
 from .feature_PL_loader import get_PlFeatures
 from .labels_PL_loader import get_PlLabels
+
+class FrontendAppView(TemplateView):
+    template_name = "index.html"
 
 class PredictDiseaseView(APIView):
     def post(self, request) -> Response:
