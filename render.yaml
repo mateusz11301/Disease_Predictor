@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: disease-predictor-app
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.settings
+      - key: PYTHONUNBUFFERED
+        value: '1'
+      - key: PYTHONDONTWRITEBYTECODE
+        value: '1'
+    buildCommand: ""
+    startCommand: ""
